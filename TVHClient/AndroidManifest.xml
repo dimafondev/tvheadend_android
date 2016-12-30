@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.dimafon.tvhclient"
+    android:versionCode="1"
+    android:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
+
+    <application
+        android:name="com.dimafon.tvhclient.TVHClientApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/tvapp_name"
+        android:theme="@style/AppTheme" >
+        <meta-data android:name="android.app.default_searchable" android:value=".SearchActivity" />
+        <activity
+            android:name=".ChannelListActivity"
+            android:label="@string/tvapp_name"
+            android:launchMode="singleTop" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ChannelDetailActivity"
+            android:launchMode="singleTop" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.dimafon.tvhclient.ChannelListActivity" />
+        </activity>
+        <activity
+            android:name=".RecordDetailActivity"
+            android:label="@string/title_record_detail" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.dimafon.tvhclient.ChannelListActivity" />
+        </activity>
+        <activity android:name=".SettingsActivity" />
+        <activity
+            android:name="org.tvheadend.tvhguide.ExternalPlaybackActivity"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name="org.tvheadend.tvhguide.PlaybackActivity"
+            android:configChanges="orientation"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <activity
+            android:name=".SearchActivity"
+            android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.dimafon.tvhclient.ChannelListActivity" />
+        </activity>
+
+        <service
+            android:name="org.tvheadend.tvhguide.htsp.HTSService"
+            android:enabled="true" />
+    </application>
+
+</manifest>

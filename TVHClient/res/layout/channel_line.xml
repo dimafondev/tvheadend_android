@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal" >
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/icon" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginTop="2dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_ch_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="RTL Television"
+            android:textAppearance="@android:style/TextAppearance.Holo.Large"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tv_current"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="19:45 Galilo"
+            android:textAppearance="@android:style/TextAppearance.Medium"
+            android:textColor="@android:color/black" />
+
+        <ProgressBar
+            android:id="@+id/tv_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:indeterminate="false"
+            android:max="10000"
+            android:progress="0" />
+
+        <TextView
+            android:id="@+id/tv_nex1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="20:15 Matrix Reloaded"
+            android:textColor="@android:color/secondary_text_light" />
+
+        <TextView
+            android:id="@+id/tv_next2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="21:30 Heute"
+            android:textColor="@android:color/secondary_text_light" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/expand_channel_btn"
+        android:layout_width="48dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="1dp"
+        android:background="@drawable/white_btn"
+        android:src="@drawable/ic_action_view_as_list" />
+
+</LinearLayout>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="horizontal" xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        layout="@layout/icon" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginTop="2dp"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                android:id="@+id/r_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="1dip"
+                android:maxLines="1"
+                android:textAppearance="@android:style/TextAppearance.Holo.Small"
+                android:textColor="@android:color/holo_red_dark" >
+            </TextView>
+
+            <TextView
+                android:id="@+id/r_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:paddingLeft="3dip"
+                android:textAppearance="@android:style/TextAppearance.Holo.Small"
+                android:textColor="@android:color/holo_red_dark" >
+            </TextView>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/r_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+            android:textColor="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingLeft="1dp" >
+
+            <TextView
+                android:id="@+id/r_channel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="1dip"
+                android:maxLines="1"
+                android:textAppearance="@android:style/TextAppearance.Holo.Small"
+                android:textColor="@android:color/holo_green_dark" >
+            </TextView>
+
+			<View
+			    android:layout_width="1dp"
+			    android:layout_height="fill_parent"
+			    android:layout_marginLeft="1dp"
+			    android:background="@android:color/darker_gray" />
+
+            <TextView
+                android:id="@+id/r_series_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="1dip"
+                android:maxLines="1"
+                android:textAppearance="@android:style/TextAppearance.Holo.Small"
+                android:textColor="@android:color/holo_blue_dark" >
+            </TextView>
+
+        </LinearLayout>
+        
+        <TextView
+            android:id="@+id/r_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textAppearance="@android:style/TextAppearance.Holo.Small"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/expand_rec_btn"
+        android:layout_width="48dp"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="1dp"
+        android:background="@drawable/white_btn"
+        android:src="@drawable/ic_action_view_as_list" />
+
+</LinearLayout>

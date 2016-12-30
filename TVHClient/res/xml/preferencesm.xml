@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <EditTextPreference
+    	android:name="@string/pref_host"
+        android:summary="@string/pref_host_sum"
+        android:defaultValue="localhost"
+        android:title="@string/pref_host"
+        android:key="serverHostPref" />
+
+    <EditTextPreference
+        android:name="@string/pref_port"
+        android:summary="@string/pref_port_sum"
+        android:defaultValue="9982"
+        android:inputType="number"
+        android:title="@string/pref_port"
+        android:key="serverPortPref" />
+
+    <EditTextPreference
+        android:name="@string/pref_user"
+        android:summary="@string/pref_user_sum"
+        android:defaultValue=""
+        android:title="@string/pref_user"
+        android:key="usernamePref" />
+
+    <EditTextPreference
+    	android:name="@string/pref_pass"
+        android:summary="@string/pref_pass_sum"
+        android:defaultValue=""
+        android:title="@string/pref_pass"
+        android:key="passwordPref"
+        android:password="true" />
+        
+    <PreferenceCategory
+        android:title="@string/pref_playback">
+        <EditTextPreference
+            android:id="@+id/pref_http_port"
+            android:name="@string/pref_http_port"
+            android:summary="@string/pref_http_port_sum"
+            android:defaultValue="9981"
+            android:title="@string/pref_http_port"
+            android:key="httpPortPref"
+            android:numeric="integer" />
+        <ListPreference
+            android:name="@string/pref_container"
+            android:summary="@string/pref_container_sum"
+            android:defaultValue="matroska"
+            android:title="@string/pref_container"
+            android:key="containerPref"
+            android:dialogTitle="@string/pref_container"
+            android:entries="@array/pref_container_list_display"
+            android:entryValues="@array/pref_container_list" />
+        <CheckBoxPreference 
+            android:id="@+id/pref_external"
+            android:name="@string/pref_external"
+            android:summary="@string/pref_external_sum"
+            android:defaultValue="true"
+            android:title="@string/pref_external"
+            android:key="externalPref" 
+        />
+    </PreferenceCategory>  
+</PreferenceScreen>
+
