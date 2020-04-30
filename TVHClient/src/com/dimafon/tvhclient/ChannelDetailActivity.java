@@ -1,9 +1,8 @@
 package com.dimafon.tvhclient;
 
-import org.tvheadend.tvhguide.TVHGuideApplication;
-import org.tvheadend.tvhguide.htsp.HTSListener;
-import org.tvheadend.tvhguide.model.Programme;
-import org.tvheadend.tvhguide.model.Recording;
+import com.dimafon.tvhclient.htsp.HTSListener;
+import com.dimafon.tvhclient.model.Programme;
+import com.dimafon.tvhclient.model.Recording;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -57,14 +56,14 @@ public class ChannelDetailActivity extends Activity implements HTSListener {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		TVHGuideApplication app = (TVHGuideApplication) getApplication();
+		ApplicationModel app = (ApplicationModel) getApplication();
 		app.addListener(this);
 	}
 	
 	@Override
 	protected void onPause() {
 		super.onPause();
-		TVHGuideApplication app = (TVHGuideApplication) getApplication();
+		ApplicationModel app = (ApplicationModel) getApplication();
 		app.removeListener(this);
 	}
 

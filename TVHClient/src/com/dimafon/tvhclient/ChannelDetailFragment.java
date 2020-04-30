@@ -3,22 +3,16 @@ package com.dimafon.tvhclient;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import org.tvheadend.tvhguide.ProgrammeListActivity;
-import org.tvheadend.tvhguide.model.Channel;
-import org.tvheadend.tvhguide.model.Programme;
-import org.tvheadend.tvhguide.model.Recording;
-
-import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import com.dimafon.tvhclient.action.ActionUtil;
 import com.dimafon.tvhclient.adapter.ProgrammeArrayAdapter;
+import com.dimafon.tvhclient.model.Channel;
+import com.dimafon.tvhclient.model.Programme;
+import com.dimafon.tvhclient.model.Recording;
 
 /**
  * A list fragment representing a list of Channels. This fragment also supports
@@ -126,8 +120,8 @@ public class ChannelDetailFragment extends ListFragment {
 		ProgrammeArrayAdapter prAdapter = (ProgrammeArrayAdapter) getListAdapter();
 		if (prAdapter != null) {
 			prAdapter.add(p);
-			prAdapter.notifyDataSetChanged();
 			prAdapter.sort();
+			prAdapter.notifyDataSetChanged();
 		}
 	}
 

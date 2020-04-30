@@ -1,6 +1,6 @@
 package com.dimafon.tvhclient.slidingmenu.model;
 
-import org.tvheadend.tvhguide.model.ChannelTag;
+import com.dimafon.tvhclient.model.ChannelTag;
 
 public class NavDrawerItem {
 	private String title;

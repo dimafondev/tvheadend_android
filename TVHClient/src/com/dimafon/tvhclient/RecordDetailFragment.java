@@ -4,12 +4,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 
-import org.tvheadend.tvhguide.ExternalPlaybackActivity;
-import org.tvheadend.tvhguide.htsp.HTSConnection;
-import org.tvheadend.tvhguide.htsp.HTSService;
-import org.tvheadend.tvhguide.model.Recording;
-
 import com.dimafon.tvhclient.action.ActionUtil;
+import com.dimafon.tvhclient.htsp.HTSConnection;
+import com.dimafon.tvhclient.htsp.HTSService;
+import com.dimafon.tvhclient.model.Recording;
 
 import android.app.Activity;
 import android.app.AlertDialog;

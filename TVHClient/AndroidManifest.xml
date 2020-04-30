@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest package="com.dimafon.tvhclient"
-    android:versionCode="1"
-    android:versionName="1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    android:versionCode="3"
+    android:versionName="1.2" xmlns:android="http://schemas.android.com/apk/res/android">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="28" />
 
     <application
         android:name="com.dimafon.tvhclient.TVHClientApplication"
@@ -42,10 +42,10 @@
         </activity>
         <activity android:name=".SettingsActivity" />
         <activity
-            android:name="org.tvheadend.tvhguide.ExternalPlaybackActivity"
+            android:name="com.dimafon.tvhclient.ExternalPlaybackActivity"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
-            android:name="org.tvheadend.tvhguide.PlaybackActivity"
+            android:name="com.dimafon.tvhclient.PlaybackActivity"
             android:configChanges="orientation"
             android:theme="@android:style/Theme.NoTitleBar" />
         <activity
@@ -64,7 +64,7 @@
         </activity>
 
         <service
-            android:name="org.tvheadend.tvhguide.htsp.HTSService"
+            android:name="com.dimafon.tvhclient.htsp.HTSService"
             android:enabled="true" />
     </application>
 

@@ -1,7 +1,6 @@
 package com.dimafon.tvhclient;
 
-import org.tvheadend.tvhguide.TVHGuideApplication;
-import org.tvheadend.tvhguide.htsp.HTSListener;
+import com.dimafon.tvhclient.htsp.HTSListener;
 
 import android.content.Intent;
 import android.os.Bundle;

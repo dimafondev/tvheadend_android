@@ -1,8 +1,5 @@
 package com.dimafon.tvhclient;
 
-import org.tvheadend.tvhguide.model.Channel;
-import org.tvheadend.tvhguide.model.ChannelTag;
-
 import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
@@ -12,6 +9,8 @@ import android.view.View.OnClickListener;
 import android.widget.ListView;
 
 import com.dimafon.tvhclient.adapter.ChannelArrayAdapter;
+import com.dimafon.tvhclient.model.Channel;
+import com.dimafon.tvhclient.model.ChannelTag;
 
 /**
  * A list fragment representing a list of Channels. This fragment also supports

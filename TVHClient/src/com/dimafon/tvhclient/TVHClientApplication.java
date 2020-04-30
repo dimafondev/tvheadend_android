@@ -5,14 +5,13 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 
-import org.tvheadend.tvhguide.TVHGuideApplication;
-import org.tvheadend.tvhguide.model.Channel;
-import org.tvheadend.tvhguide.model.ChannelTag;
-import org.tvheadend.tvhguide.model.Programme;
-import org.tvheadend.tvhguide.model.Recording;
+import com.dimafon.tvhclient.model.Channel;
+import com.dimafon.tvhclient.model.ChannelTag;
+import com.dimafon.tvhclient.model.Programme;
+import com.dimafon.tvhclient.model.Recording;
 
 
-public class TVHClientApplication extends TVHGuideApplication {
+public class TVHClientApplication extends ApplicationModel {
 	
 	private Collection<Long> expandedProgs = new HashSet<Long>();
 	private ChannelTag currentTag;

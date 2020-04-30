@@ -7,10 +7,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.tvheadend.tvhguide.model.Channel;
-import org.tvheadend.tvhguide.model.Programme;
-import org.tvheadend.tvhguide.model.Recording;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -26,6 +22,9 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.dimafon.tvhclient.R;
+import com.dimafon.tvhclient.model.Channel;
+import com.dimafon.tvhclient.model.Programme;
+import com.dimafon.tvhclient.model.Recording;
 
 public class RecordsArrayAdapter extends ArrayAdapter<Recording> {
 	private static final long SIX_DAYS = 1000*60*60*24*6;

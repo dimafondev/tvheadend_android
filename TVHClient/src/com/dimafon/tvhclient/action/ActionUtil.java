@@ -4,12 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
-import org.tvheadend.tvhguide.ExternalPlaybackActivity;
-import org.tvheadend.tvhguide.htsp.HTSService;
-import org.tvheadend.tvhguide.model.Channel;
-import org.tvheadend.tvhguide.model.Programme;
-import org.tvheadend.tvhguide.model.Recording;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -18,8 +12,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.dimafon.tvhclient.ExternalPlaybackActivity;
 import com.dimafon.tvhclient.R;
 import com.dimafon.tvhclient.TVHClientApplication;
+import com.dimafon.tvhclient.htsp.HTSService;
+import com.dimafon.tvhclient.model.Channel;
+import com.dimafon.tvhclient.model.Programme;
+import com.dimafon.tvhclient.model.Recording;
 
 public class ActionUtil {
 

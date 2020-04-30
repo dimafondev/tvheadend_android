@@ -9,4 +9,197 @@
     <string name="desc_list_item_icon">TODO</string>
     <string name="title_record_detail">Recording Detail</string>
     <string name="no_play">It is not yet possible to play.</string>
+    <string name="menu_refresh">Refresh</string>
+    <string name="menu_record_remove">Remove recording</string>
+    <string name="pr_season">Season</string>
+    <string name="pr_episode">Episode</string>
+    <string name="pr_part">Part</string>
+    <string name="ch_no_transmission">No transmission</string>
+    <string name="today">today</string>
+    
+    <string name="pvr_scheduled">Scheduled</string>
+    <string name="pvr_recording">Recording</string>
+    <string name="pvr_completed">Completed</string>
+    <string name="pvr_missed">Missed</string>
+    <string name="pvr_invalid">Invalid</string>
+
+    <string name="err_auth">Access denied</string>
+    <string name="err_inv">Invalid response from server</string>
+    <string name="err_connect">Can\'t connect to server</string>
+    <string name="err_con_lost">Lost connection to server</string>
+    
+    <string name="search_hint">Search the EPG</string>
+    <string name="pref_host">Hostname</string>
+    <string name="pref_host_sum">Enter Server Hostname</string>
+
+    <string name="pref_port">Port</string>
+    <string name="pref_port_sum">Enter Server Port</string>
+
+    <string name="pref_user">Username</string>
+    <string name="pref_user_sum">Enter Username</string>
+
+    <string name="pref_pass">Password</string>
+    <string name="pref_pass_sum">Enter Password</string>
+    
+    <string name="pref_ui">User interface</string>
+        
+    <string name="pref_icons">Channel icons</string>
+    <string name="pref_icons_sum">Show channel icons?</string>
+
+    <string name="pref_theme">Light theme</string>
+    <string name="pref_theme_sum">Use a light theme</string>
+    
+    <string name="pref_res">Resolution</string>
+    <string name="pref_res_sum">Maximum resolution for the transcoder</string>
+
+    <string name="pref_acodec">Audio codec</string>
+    <string name="pref_acodec_sum">Audio codec to use with the transcoder</string>
+    
+    <string name="pref_vcodec">Video codec</string>
+    <string name="pref_vcodec_sum">Video codec to use with the transcoder</string>
+    
+    <string name="pref_scodec">Subtitle codec</string>
+    <string name="pref_scodec_sum">Subtitle codec to use with the transcoder</string>
+    
+    <string name="pref_container">Media container</string>
+    <string name="pref_container_sum">Prefered media container</string>
+    
+    <string name="pref_playback">Playback</string>
+    
+    <string name="pref_http_port">HTTP port</string>
+    <string name="pref_http_port_sum">Enter Server HTTP Port</string>
+    
+    <string name="pref_transcode">Transcode stream</string>
+    <string name="pref_transcode_sum">Request a transcoded stream during live playback</string>
+
+    <string name="pref_external">Prefer external player</string>
+    <string name="pref_external_sum">Use an external player for live streams (BSPlayer seems OK)</string>
+    
+    <string-array name="pr_content_type0">
+        <item>Movie/Drama</item>
+        <item>News/Current affairs</item>
+        <item>Show/Game show</item>
+        <item>Sports</item>
+        <item>Children\'s / Youth</item>
+        <item>Music/Ballet/Dance</item>
+        <item>Arts/Culture</item>
+        <item>Social/Political issues/Economics</item>
+        <item>Education/Science/Factual</item>
+        <item>Leisure hobbies</item>
+        <item>Misc</item>
+    </string-array>
+
+    <string-array name="pr_content_type1">
+        <item>Movie/Drama</item>
+        <item>Detective/Thriller</item>
+        <item>Adventure/Western/War</item>
+        <item>Science Fiction/Fantasy/Horror</item>
+        <item>Comedy</item>
+        <item>Soap/Melodrama/Folkloric</item>
+        <item>Romance</item>
+        <item>Serious/ClassicalReligion/Historical</item>
+        <item>Adult Movie/Drama</item>
+    </string-array>
+
+    <string-array name="pr_content_type2">
+        <item>News/Current affairs</item>
+        <item>News/Weather Report</item>
+        <item>Magazine</item>
+        <item>Documentary</item>
+        <item>Discussion/Interview/Debate</item>
+    </string-array>
+
+    <string-array name="pr_content_type3">
+        <item>Show/Game show</item>
+        <item>Game show/Quiz/Contest</item>
+        <item>Variety</item>
+        <item>Talk</item>
+    </string-array>
+    
+    <string-array name="pr_content_type4">
+        <item>Sports</item>
+        <item>Special Event</item>
+        <item>Magazine</item>
+        <item>Football/Soccer</item>
+        <item>Tennis/Squash</item>
+        <item>Team sports</item>
+        <item>Athletics</item>
+        <item>Motor Sport</item>
+        <item>Water Sport</item>
+        <item>Winter Sports</item>
+        <item>Equestrian</item>
+        <item>Martial sports</item>
+    </string-array>
+
+    <string-array name="pr_content_type5">
+        <item>Children\'s / Youth</item>
+        <item>Pre-school</item>
+        <item>Entertainment (6 to 14 year-olds)</item>
+        <item>Entertainment (10 to 16 year-olds)</item>
+        <item>Informational/Educational/Schools</item>
+        <item>Cartoons/Puppets</item>
+    </string-array>
+    
+    <string-array name="pr_content_type6">
+        <item>Music/Ballet/Dance</item>
+        <item>Rock/Pop</item>
+        <item>Serious music/Classical Music</item>
+        <item>Folk/Traditional music</item>
+        <item>Jazz</item>
+        <item>Musical/Opera</item>
+        <item>Ballet</item>
+    </string-array>
+
+    <string-array name="pr_content_type7">
+        <item>Arts/Culture</item>
+        <item>Performing Arts</item>
+        <item>Fine Arts</item>
+        <item>Religion</item>
+        <item>Popular Culture/Tradital Arts</item>
+        <item>Literature</item>
+        <item>Film/Cinema</item>
+        <item>Experimental Film/Video</item>
+        <item>Broadcasting/Press</item>
+        <item>New Media</item>
+        <item>Magazine</item>
+        <item>Fashion</item>
+    </string-array>
+
+    <string-array name="pr_content_type8">
+        <item>Social/Political issues/Economics</item>
+        <item>Magazine/Report/Domentary</item>
+        <item>Economics/Social Advisory</item>
+        <item>Remarkable People</item>
+    </string-array>
+
+    
+    <string-array name="pr_content_type9">
+        <item>Education/Science/Factual</item>        
+        <item>Nature/Animals/Environment</item>
+        <item>Technology/Natural sciences</item>
+        <item>Medicine/Physiology/Psychology</item>
+        <item>Foreign Countries/Expeditions</item>
+        <item>Social/Spiritual Sciences</item>
+        <item>Further Education</item>
+        <item>Languages</item>
+    </string-array>
+
+    <string-array name="pr_content_type10">
+        <item>Leisure hobbies</item>
+        <item>Tourism/Travel</item>
+        <item>Handicraft</item>
+        <item>Motoring</item>
+        <item>Fitness and Health</item>
+        <item>Cooking</item>
+        <item>Advertisement/Shopping</item>
+        <item>Gardening</item>
+    </string-array>
+
+    <string-array name="pr_content_type11">
+        <item>Misc</item>
+        <item>Black and White</item>
+        <item>Unpublished</item>
+        <item>Live Broadcast</item>
+    </string-array>
+    
 </resources>

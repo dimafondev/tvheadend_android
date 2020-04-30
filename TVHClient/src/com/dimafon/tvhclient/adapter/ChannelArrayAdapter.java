@@ -5,9 +5,6 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.Iterator;
 
-import org.tvheadend.tvhguide.model.Channel;
-import org.tvheadend.tvhguide.model.Programme;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -23,6 +20,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.dimafon.tvhclient.R;
+import com.dimafon.tvhclient.model.Channel;
+import com.dimafon.tvhclient.model.Programme;
 
 public class ChannelArrayAdapter extends ArrayAdapter<Channel> {
 	private static final String tag = "ChannelArrayAdapter";
@@ -90,6 +89,17 @@ public class ChannelArrayAdapter extends ArrayAdapter<Channel> {
 		return row;
 	}
 
+	private Programme iterateOverPast(Iterator<Programme> it) {
+		long now = System.currentTimeMillis();
+		while(it.hasNext()){
+			Programme p = it.next();
+			if(p.stop.getTime() > now){
+				return p;
+			}
+		}
+		return null;
+	}
+
 	private String getLastTime(Programme p) {
 
 		return p != null ? DateFormat.getTimeFormat(getContext()).format(p.stop) : null;
@@ -100,13 +110,13 @@ public class ChannelArrayAdapter extends ArrayAdapter<Channel> {
 			public int compare(Channel ch1, Channel ch2) {
 				return ch1.compareTo(ch2);
 			}
-		});
+		});		 
 	}
 
 	private Programme updateNextProgramm(Iterator<Programme> it, TextView text, String lastTime) {
-		Programme p = null;
-		if (it.hasNext()) {
-			p = it.next();
+		Programme p = iterateOverPast(it);
+	
+		if (p!=null) {
 			text.setText(DateFormat.getTimeFormat(getContext()).format(p.start) + " " + p.title);
 			text.setVisibility(View.VISIBLE);
 		} else {

@@ -1,6 +1,6 @@
 package com.dimafon.tvhclient;
 
-import org.tvheadend.tvhguide.htsp.HTSService;
+import com.dimafon.tvhclient.htsp.HTSService;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -29,7 +29,7 @@ public class SettingsActivity extends PreferenceActivity {
 
         // Show the Up button in the action bar.
         getActionBar().setDisplayHomeAsUpEnabled(true);
-        getActionBar().setTitle(R.string.menu_settings);
+        getActionBar().setTitle(R.string.settings);
 
     }
 

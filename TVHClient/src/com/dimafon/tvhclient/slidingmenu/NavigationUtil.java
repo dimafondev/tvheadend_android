@@ -6,13 +6,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.tvheadend.tvhguide.model.Channel;
-import org.tvheadend.tvhguide.model.ChannelTag;
-
 import android.graphics.Color;
 
 import com.dimafon.tvhclient.R;
 import com.dimafon.tvhclient.TVHClientApplication;
+import com.dimafon.tvhclient.model.Channel;
+import com.dimafon.tvhclient.model.ChannelTag;
 import com.dimafon.tvhclient.slidingmenu.model.NavDrawerItem;
 
 public class NavigationUtil {

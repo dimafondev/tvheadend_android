@@ -3,8 +3,6 @@ package com.dimafon.tvhclient;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.tvheadend.tvhguide.model.Recording;
-
 import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
@@ -20,6 +18,7 @@ import android.widget.ListView;
 
 import com.dimafon.tvhclient.action.ActionUtil;
 import com.dimafon.tvhclient.adapter.RecordsArrayAdapter;
+import com.dimafon.tvhclient.model.Recording;
 
 /**
  * A list fragment representing a list of Recordings. This fragment also
@@ -94,8 +93,12 @@ public class RecordsFragment extends ListFragment implements OnClickListener,
 		if (getListAdapter() == null) {
 			setListAdapter(new RecordsArrayAdapter(getActivity(),
 					R.layout.recording_line, this, new ArrayList<Recording>()));
-			populateList();
 		}
+	}
+	@Override
+	public void onResume() {
+		super.onResume();
+		populateList();
 	}
 
 	@Override

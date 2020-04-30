@@ -6,13 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.tvheadend.tvhguide.TVHGuideApplication;
-import org.tvheadend.tvhguide.htsp.HTSListener;
-import org.tvheadend.tvhguide.htsp.HTSService;
-import org.tvheadend.tvhguide.model.Channel;
-import org.tvheadend.tvhguide.model.Programme;
-import org.tvheadend.tvhguide.model.Recording;
-
 import android.app.Activity;
 import android.app.ListActivity;
 import android.app.SearchManager;
@@ -36,8 +29,14 @@ import android.widget.TextView;
 
 import com.dimafon.tvhclient.action.ActionUtil;
 import com.dimafon.tvhclient.adapter.AdapterUtil;
+import com.dimafon.tvhclient.htsp.HTSListener;
+import com.dimafon.tvhclient.htsp.HTSService;
+import com.dimafon.tvhclient.model.Channel;
+import com.dimafon.tvhclient.model.Programme;
+import com.dimafon.tvhclient.model.Recording;
 
-public class SearchActivity extends ListActivity implements HTSListener, OnClickListener {
+public class SearchActivity extends ListActivity implements HTSListener,
+		OnClickListener {
 
 	private SearchResultAdapter srAdapter;
 	private SparseArray<String> contentTypes;
@@ -48,7 +47,7 @@ public class SearchActivity extends ListActivity implements HTSListener, OnClick
 	@Override
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		contentTypes = TVHGuideApplication.getContentTypes(this);
+		contentTypes = ApplicationModel.getContentTypes(this);
 
 		List<Programme> srList = new ArrayList<Programme>();
 		srAdapter = new SearchResultAdapter(this, srList);
@@ -63,11 +62,12 @@ public class SearchActivity extends ListActivity implements HTSListener, OnClick
 	protected void onNewIntent(Intent intent) {
 		super.onNewIntent(intent);
 
-		if (!Intent.ACTION_SEARCH.equals(intent.getAction()) || !intent.hasExtra(SearchManager.QUERY)) {
+		if (!Intent.ACTION_SEARCH.equals(intent.getAction())
+				|| !intent.hasExtra(SearchManager.QUERY)) {
 			return;
 		}
 
-		TVHGuideApplication app = (TVHGuideApplication) getApplication();
+		ApplicationModel app = (ApplicationModel) getApplication();
 
 		Bundle appData = intent.getBundleExtra(SearchManager.APP_DATA);
 		if (appData != null) {
@@ -77,7 +77,6 @@ public class SearchActivity extends ListActivity implements HTSListener, OnClick
 		}
 
 		srAdapter.clear();
-
 		String query = intent.getStringExtra(SearchManager.QUERY);
 		pattern = Pattern.compile(query, Pattern.CASE_INSENSITIVE);
 		intent = new Intent(SearchActivity.this, HTSService.class);
@@ -92,32 +91,33 @@ public class SearchActivity extends ListActivity implements HTSListener, OnClick
 		if (channel == null) {
 			for (Channel ch : app.getChannels()) {
 				for (Programme p : ch.epg) {
-					if (pattern.matcher(p.title).find()) {
+					if (p.title != null && pattern.matcher(p.title).find()) {
 						srAdapter.add(p);
 					}
 				}
 			}
 		} else {
 			for (Programme p : channel.epg) {
-				if (pattern.matcher(p.title).find()) {
+				if (p.title != null && pattern.matcher(p.title).find()) {
 					srAdapter.add(p);
 				}
 			}
 		}
-		getActionBar().setTitle(this.getString(android.R.string.search_go) + ": " + query);
+		getActionBar().setTitle(
+				this.getString(android.R.string.search_go) + ": " + query);
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		TVHGuideApplication app = (TVHGuideApplication) getApplication();
+		ApplicationModel app = (ApplicationModel) getApplication();
 		app.addListener(this);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
-		TVHGuideApplication app = (TVHGuideApplication) getApplication();
+		ApplicationModel app = (ApplicationModel) getApplication();
 		app.removeListener(this);
 	}
 
@@ -127,16 +127,17 @@ public class SearchActivity extends ListActivity implements HTSListener, OnClick
 		SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
 		MenuItem searchItem = (MenuItem) menu.findItem(R.id.action_search);
 		searchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-		searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+		searchView.setSearchableInfo(searchManager
+				.getSearchableInfo(getComponentName()));
 		return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		if(item.getItemId() == android.R.id.home){
-	        NavUtils.navigateUpFromSameTask(this);
-	        return true;
-	    }
+		if (item.getItemId() == android.R.id.home) {
+			NavUtils.navigateUpFromSameTask(this);
+			return true;
+		}
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -148,19 +149,19 @@ public class SearchActivity extends ListActivity implements HTSListener, OnClick
 	}
 
 	public void onMessage(String action, final Object obj) {
-		if (action.equals(TVHGuideApplication.ACTION_PROGRAMME_ADD)) {
+		if (action.equals(ApplicationModel.ACTION_PROGRAMME_ADD)) {
 			runOnUiThread(new Runnable() {
 
 				public void run() {
 					Programme p = (Programme) obj;
-					if (pattern != null && pattern.matcher(p.title).find()) {
+					if (pattern != null && p.title!=null && pattern.matcher(p.title).find()) {
 						srAdapter.add(p);
 						srAdapter.notifyDataSetChanged();
 						srAdapter.sort();
 					}
 				}
 			});
-		} else if (action.equals(TVHGuideApplication.ACTION_PROGRAMME_DELETE)) {
+		} else if (action.equals(ApplicationModel.ACTION_PROGRAMME_DELETE)) {
 			runOnUiThread(new Runnable() {
 
 				public void run() {
@@ -169,7 +170,7 @@ public class SearchActivity extends ListActivity implements HTSListener, OnClick
 					srAdapter.notifyDataSetChanged();
 				}
 			});
-		} else if (action.equals(TVHGuideApplication.ACTION_PROGRAMME_UPDATE)) {
+		} else if (action.equals(ApplicationModel.ACTION_PROGRAMME_UPDATE)) {
 			runOnUiThread(new Runnable() {
 
 				public void run() {
@@ -177,7 +178,7 @@ public class SearchActivity extends ListActivity implements HTSListener, OnClick
 					srAdapter.updateView(getListView(), p);
 				}
 			});
-		} else if (action.equals(TVHGuideApplication.ACTION_DVR_UPDATE)) {
+		} else if (action.equals(ApplicationModel.ACTION_DVR_UPDATE)) {
 			runOnUiThread(new Runnable() {
 
 				public void run() {
@@ -233,7 +234,8 @@ public class SearchActivity extends ListActivity implements HTSListener, OnClick
 			title.setText(p.title);
 			title.invalidate();
 
-			String s = AdapterUtil.buildSeriesInfoString(p.seriesInfo, getResources());
+			String s = AdapterUtil.buildSeriesInfoString(p.seriesInfo,
+					getResources());
 			if (s.length() > 0) {
 				channel.setText(ch.name + " / " + s);
 			} else {
@@ -252,14 +254,16 @@ public class SearchActivity extends ListActivity implements HTSListener, OnClick
 			time.setText(AdapterUtil.getTimeSpan(p, time.getContext()));
 			time.invalidate();
 
-			AdapterUtil.updateIcon(row, p.channel.name, p.channel.iconBitmap, AdapterUtil.getStateImage(p), false);
+			AdapterUtil.updateIcon(row, p.channel.name, p.channel.iconBitmap,
+					AdapterUtil.getStateImage(p), false);
 
 			TVHClientApplication app = (TVHClientApplication) getApplication();
 			boolean expanded = app.isExpanded(p);
 			expandBtn.setTag(description);
 			expandBtn.setChecked(expanded);
 			description.setTag(p);
-			AdapterUtil.updateExpandableDescription(expanded, description, expandBtn, p.description);
+			AdapterUtil.updateExpandableDescription(expanded, description,
+					expandBtn, p.description);
 
 		}
 	}

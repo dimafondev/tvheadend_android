@@ -3,9 +3,7 @@ package com.dimafon.tvhclient.adapter;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
-import org.tvheadend.tvhguide.R.string;
-import org.tvheadend.tvhguide.model.Programme;
-import org.tvheadend.tvhguide.model.SeriesInfo;
+import com.dimafon.tvhclient.R.string;
 
 import android.app.ActionBar.LayoutParams;
 import android.content.Context;
@@ -31,6 +29,8 @@ import android.widget.TextView;
 import com.dimafon.tvhclient.R;
 import com.dimafon.tvhclient.anim.FlipAnimation;
 import com.dimafon.tvhclient.anim.SwapViews;
+import com.dimafon.tvhclient.model.Programme;
+import com.dimafon.tvhclient.model.SeriesInfo;
 import com.dimafon.tvhclient.slidingmenu.NavigationUtil;
 
 public class AdapterUtil {

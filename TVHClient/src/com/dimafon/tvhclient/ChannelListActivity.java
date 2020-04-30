@@ -1,13 +1,5 @@
 package com.dimafon.tvhclient;
 
-import org.tvheadend.tvhguide.PlaybackActivity;
-import org.tvheadend.tvhguide.TVHGuideApplication;
-import org.tvheadend.tvhguide.htsp.HTSListener;
-import org.tvheadend.tvhguide.htsp.HTSService;
-import org.tvheadend.tvhguide.model.Channel;
-import org.tvheadend.tvhguide.model.ChannelTag;
-import org.tvheadend.tvhguide.model.Recording;
-
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
@@ -26,11 +18,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SearchView;
-import android.widget.SearchView.OnQueryTextListener;
 
 import com.dimafon.tvhclient.action.ActionUtil;
-import com.dimafon.tvhclient.adapter.ChannelArrayAdapter;
+import com.dimafon.tvhclient.htsp.HTSListener;
+import com.dimafon.tvhclient.htsp.HTSService;
+import com.dimafon.tvhclient.model.Channel;
+import com.dimafon.tvhclient.model.ChannelTag;
+import com.dimafon.tvhclient.model.Recording;
 import com.dimafon.tvhclient.slidingmenu.NavigationUtil;
 import com.dimafon.tvhclient.slidingmenu.model.NavDrawerItem;
 
@@ -177,6 +173,10 @@ public class ChannelListActivity extends Activity implements
 			} else {
 				mChannelListFragment.populateList();
 			}
+			if(mChannelListFragment.isAdded()){
+				ListView listView = mChannelListFragment.getListView();
+				listView.setSelection(0);
+			}
 			updateDefaultDetails(mChannelListFragment);
 		}
 
@@ -199,7 +199,7 @@ public class ChannelListActivity extends Activity implements
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		if (item.getItemId() == R.id.action_refresh) {
-			TVHGuideApplication app = (TVHGuideApplication) getApplication();
+			ApplicationModel app = (ApplicationModel) getApplication();
 			connect(true);
 			setLoading(app.isLoading());
 		}
@@ -272,7 +272,7 @@ public class ChannelListActivity extends Activity implements
 	@Override
 	protected void onResume() {
 		super.onResume();
-		TVHGuideApplication app = (TVHGuideApplication) getApplication();
+		ApplicationModel app = (ApplicationModel) getApplication();
 		app.addListener(this);
 		connect(false);
 		setLoading(app.isLoading());
@@ -331,7 +331,7 @@ public class ChannelListActivity extends Activity implements
 
 	@Override
 	public void onMessage(final String action, final Object obj) {
-		if (action.equals(TVHGuideApplication.ACTION_LOADING)) {
+		if (action.equals(ApplicationModel.ACTION_LOADING)) {
 
 			runOnUiThread(new Runnable() {
 
@@ -340,7 +340,7 @@ public class ChannelListActivity extends Activity implements
 					setLoading(loading);
 				}
 			});
-		} else if (action.equals(TVHGuideApplication.ACTION_CHANNEL_ADD)) {
+		} else if (action.equals(ApplicationModel.ACTION_CHANNEL_ADD)) {
 			runOnUiThread(new Runnable() {
 
 				public void run() {
@@ -350,7 +350,7 @@ public class ChannelListActivity extends Activity implements
 					mNavigationDrawerFragment.updateTagsCounter();
 				}
 			});
-		} else if (action.equals(TVHGuideApplication.ACTION_CHANNEL_DELETE)) {
+		} else if (action.equals(ApplicationModel.ACTION_CHANNEL_DELETE)) {
 			runOnUiThread(new Runnable() {
 
 				public void run() {
@@ -360,7 +360,7 @@ public class ChannelListActivity extends Activity implements
 					mNavigationDrawerFragment.updateTagsCounter();
 				}
 			});
-		} else if (action.equals(TVHGuideApplication.ACTION_CHANNEL_UPDATE)) {
+		} else if (action.equals(ApplicationModel.ACTION_CHANNEL_UPDATE)) {
 			runOnUiThread(new Runnable() {
 
 				public void run() {
@@ -370,17 +370,17 @@ public class ChannelListActivity extends Activity implements
 					mNavigationDrawerFragment.updateTagsCounter();
 				}
 			});
-		} else if (action.equals(TVHGuideApplication.ACTION_TAG_ADD)
-				|| action.equals(TVHGuideApplication.ACTION_TAG_DELETE)) {
+		} else if (action.equals(ApplicationModel.ACTION_TAG_ADD)
+				|| action.equals(ApplicationModel.ACTION_TAG_DELETE)) {
 			runOnUiThread(new Runnable() {
 
 				public void run() {
 					mNavigationDrawerFragment.updateTags();
 				}
 			});
-		} else if (action.equals(TVHGuideApplication.ACTION_TAG_UPDATE)) {
+		} else if (action.equals(ApplicationModel.ACTION_TAG_UPDATE)) {
 			// NOP
-		} else if (action.equals(TVHGuideApplication.ACTION_DVR_ADD)) {
+		} else if (action.equals(ApplicationModel.ACTION_DVR_ADD)) {
 			runOnUiThread(new Runnable() {
 
 				public void run() {
@@ -388,7 +388,7 @@ public class ChannelListActivity extends Activity implements
 						mRecordfragment.addRecording((Recording) obj);
 				}
 			});
-		} else if (action.equals(TVHGuideApplication.ACTION_DVR_DELETE)) {
+		} else if (action.equals(ApplicationModel.ACTION_DVR_DELETE)) {
 			runOnUiThread(new Runnable() {
 
 				public void run() {
@@ -396,7 +396,7 @@ public class ChannelListActivity extends Activity implements
 						mRecordfragment.removeRecording((Recording) obj);
 				}
 			});
-		} else if (action.equals(TVHGuideApplication.ACTION_DVR_UPDATE)) {
+		} else if (action.equals(ApplicationModel.ACTION_DVR_UPDATE)) {
 			runOnUiThread(new Runnable() {
 
 				public void run() {
@@ -414,7 +414,7 @@ public class ChannelListActivity extends Activity implements
 	@Override
 	protected void onPause() {
 		super.onPause();
-		TVHGuideApplication app = (TVHGuideApplication) getApplication();
+		ApplicationModel app = (ApplicationModel) getApplication();
 		app.removeListener(this);
 	}
 

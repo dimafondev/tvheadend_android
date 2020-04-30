@@ -3,9 +3,6 @@ package com.dimafon.tvhclient.adapter;
 import java.util.Comparator;
 import java.util.List;
 
-import org.tvheadend.tvhguide.TVHGuideApplication;
-import org.tvheadend.tvhguide.model.Programme;
-
 import android.app.Activity;
 import android.content.Context;
 import android.text.Html;
@@ -21,7 +18,9 @@ import android.widget.TextView;
 
 import com.dimafon.tvhclient.R;
 import com.dimafon.tvhclient.TVHClientApplication;
+import com.dimafon.tvhclient.ApplicationModel;
 import com.dimafon.tvhclient.action.ActionUtil;
+import com.dimafon.tvhclient.model.Programme;
 
 public class ProgrammeArrayAdapter extends ArrayAdapter<Programme> implements OnClickListener {
 	private static final String tag = "ProgrammeArrayAdapter";
@@ -32,7 +31,7 @@ public class ProgrammeArrayAdapter extends ArrayAdapter<Programme> implements On
 	public ProgrammeArrayAdapter(Activity context, int textViewResourceId, List<Programme> programmes) {
 		super(context, textViewResourceId, programmes);
 		this.context = context;
-		contentTypes = TVHGuideApplication.getContentTypes(context);
+		contentTypes = ApplicationModel.getContentTypes(context);
 		app = ((TVHClientApplication) context.getApplication());
 	}
 
